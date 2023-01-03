@@ -1,0 +1,21 @@
+.body{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+   
+}
+.items{
+    display: flex;
+    flex-direction: column;
+    width: 600px;
+    align-items: center;
+   
+}
+.btn1{
+    background-color: bisque;
+    height: 70px;
+    width: 70px;
+    margin: 5px;
+   
+}
