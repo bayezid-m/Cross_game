@@ -1,21 +1,21 @@
 .body{
     display: flex;
-    flex-direction: row;
     align-items: center;
     justify-content: center;
    
 }
-.items{
-    display: flex;
-    flex-direction: column;
-    width: 600px;
-    align-items: center;
-   
-}
 .btn1{
-    background-color: bisque;
-    height: 70px;
+     background-color: rgb(152, 186, 248);
     width: 70px;
-    margin: 5px;
-   
+    height: 70px;
+    border: 1px solid #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+}
+.players{
+    display: flex;
+    justify-content: space-between;
+    margin-left: 2px;
 }

@@ -1,27 +1,54 @@
-import React , { useState }from 'react'
-import { Link, useNavigate } from "react-router-dom";
-
+import React , { useState, useRef  }from 'react'
+import { Link as Button, useNavigate } from "react-router-dom";
+import Game from "./Game"
 export default function Home() {
+  const [formValues, setFormValues] = useState({
+    player001: "",
+    player002: "",
+  });
+  const [isFormVisible, setIsFormVisible] = useState(true);
+
+  const inputFileRef = useRef();
+
+  const handleChange = (event) => {
+      const { name, value } = event.target;
+      console.log(name, value);
+
+      setFormValues({ ...formValues, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+      e.preventDefault();
+      console.log(formValues);
+      console.log(inputFileRef?.current?.files);
+      setIsFormVisible(false);
+  };
+
+
+
   return (
     <div>
-        <div>
-            <h1>Welcome to the game</h1>
-        </div>
+        
         <div className="container">
         <div className="row">
           <div className="col-md-6 offset-md-3 border rounded p-4 mt-2 shadow">
          
-  
-            <form >
+          {isFormVisible? (
+            
+            <form onSubmit={handleSubmit}>
+            <div>
+            <h1>Welcome to the game</h1>
+        </div>
               <div className="mb-3">
                 <label className="form-label">
                   Player 1
                 </label>
                 <input
-                  type={"text"}
-                  className="form-control"
-                  placeholder="Enter name of the player 1"
-                  name="player 1"
+                  placeholder="Enter the name of player 1"
+                  name="player001"
+                  value={formValues?.player001}
+                  onChange={handleChange}
+
                
                 />
               </div>
@@ -30,17 +57,21 @@ export default function Home() {
                  Player 2
                 </label>
                 <input
-                  type={"text"}
-                  className="form-control"
-                  placeholder="Enter name of the player 2"
-                  name="player 2"
+                   placeholder="Enter the name of player 1"
+                  name="player002"
+                  value={formValues?.player002}
+                  onChange={handleChange}
               
                 />
               </div>
-              <Link className="btn btn-dark mx-2" to="/game">
+              <button type="submit" className="btn btn-dark mx-2">
                 Start
-              </Link>
+              </button>
             </form>
+          ): (
+        <Game data={formValues} />
+      )}
+            
           </div>
         </div>
       </div>
